@@ -6,6 +6,9 @@
 
 This repo includes:
 
+* [wireframe](z-documentation/yard-org-wireframe.png)
+* [brainstorm](z-documentation/yard-org-wireframe.png)
+* [erd](z-documentation/yard-org-erd.png)
 * a single, simple API endpoint (`/api/v1/fruits`)
 * a single React component (`<App />`)
 * an example database module (`server/db/fruits.js`)
