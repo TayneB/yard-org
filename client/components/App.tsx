@@ -1,15 +1,24 @@
 import { useEvents } from '../hooks/useEvents.ts'
 
 function App() {
-  const { data } = useEvents()
-  console.log(data[0])
+  const { data, isLoading, isError } = useEvents()
+
+  if (!data || isLoading) {
+    return <p>Loading...</p>
+  }
+
+  if (isError) {
+    return <p>Somthing went wrong...</p>
+  }
+
   return (
     <>
       <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
+        <h1>Bilyard Family Events!</h1>
         <ul>
-          <li>{data[0].name}</li>
-          {/* {data && data.map((fruit) => <li key={fruit}>{fruit}</li>)} */}
+          {data.map((data) => (
+            <li key={data.id}>{data.name}</li>
+          ))}
         </ul>
       </div>
     </>
