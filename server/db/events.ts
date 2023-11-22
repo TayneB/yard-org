@@ -1,7 +1,7 @@
 import db from './connection.ts'
-import { Event } from '../../models/event.ts'
+import { ClientEvent } from '../../models/event.ts'
 
-export async function getAllEvents(): Promise<Event[]> {
+export async function getAllEvents() /* Promise<Event[]> */ {
   return db('events').select([
     'id',
     'name',
@@ -12,4 +12,18 @@ export async function getAllEvents(): Promise<Event[]> {
     'date_created as dateCreated',
     'edit_note as editNote',
   ])
+}
+
+export async function addEvent(event: ClientEvent): Promise<ClientEvent[]> {
+  return db('events').insert({
+    name: event.name,
+    event_date: event.eventDate,
+    description: event.description,
+    created_by: event.createdBy,
+    date_created: Date.now(),
+  })
+}
+
+export async function deleteEvent(id: string) {
+  return db('events').where('id', id).del()
 }
