@@ -26,5 +26,49 @@ export async function seed(knex) {
       date_created: Date.now(),
       edit_note: 'Is actually Pink Panther 2',
     },
+    {
+      id: 3,
+      name: 'Hauraki Boat Trip',
+      event_date: Date.now(),
+      description:
+        'Sail all around the Hauraki gulf, from Waiheke to Ranigtoto and Motuihe',
+      attendees: 'Tayne, Grant',
+      created_by: 'Tayne',
+      date_created: Date.now(),
+      edit_note: null,
+    },
+    {
+      id: 4,
+      name: 'Pink Panther Movie Night',
+      event_date: Date.now(),
+      description:
+        'Watch inspector Clueso muck everything up and still win... SOMEHOW',
+      attendees: 'Grant, Jame, Natalie',
+      created_by: 'James',
+      date_created: Date.now(),
+      edit_note: 'Is actually Pink Panther 2',
+    },
+    {
+      id: 5,
+      name: 'Hauraki Boat Trip',
+      event_date: Date.now(),
+      description:
+        'Sail all around the Hauraki gulf, from Waiheke to Ranigtoto and Motuihe',
+      attendees: 'Tayne, Grant',
+      created_by: 'Tayne',
+      date_created: Date.now(),
+      edit_note: null,
+    },
+    {
+      id: 6,
+      name: 'Pink Panther Movie Night',
+      event_date: Date.now(),
+      description:
+        'Watch inspector Clueso muck everything up and still win... SOMEHOW',
+      attendees: 'Grant, Jame, Natalie',
+      created_by: 'James',
+      date_created: Date.now(),
+      edit_note: 'Is actually Pink Panther 2',
+    },
   ])
 }
