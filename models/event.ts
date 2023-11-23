@@ -6,10 +6,10 @@ export interface Event {
   attendees: string
   created_by: string
   date_created: number
-  edit_note: string
+  edit_note: null | string
 }
 
-export interface ClientEvent {
+export interface Event {
   id: number
   name: string
   eventDate: number
@@ -17,7 +17,7 @@ export interface ClientEvent {
   attendees: string
   createdBy: string
   dateCreated: number
-  editNote: string
+  editNote: null | string
 }
 
 export interface FruitData {

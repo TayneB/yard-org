@@ -8,7 +8,7 @@ const router = Router()
 router.get('/', async (req, res) => {
   try {
     const events = await db.getAllEvents()
-    res.json(events)
+    res.json({ events })
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'Something went wrong' })
