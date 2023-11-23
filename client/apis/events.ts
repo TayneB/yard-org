@@ -8,3 +8,7 @@ export async function getAllEvents(): Promise<Event[]> {
     return res.body.events
   })
 }
+
+export async function deleteEvent(id: number): Promise<void> {
+  await request.delete(`${rootUrl}/events/delete/${id}`)
+}

@@ -4,7 +4,7 @@ import {
   useQueryClient,
   MutationFunction,
 } from '@tanstack/react-query'
-import { getAllEvents } from '../apis/events.ts'
+import { deleteEvent, getAllEvents } from '../apis/events.ts'
 
 export function useEvents() {
   const query = useQuery({ queryKey: ['events'], queryFn: getAllEvents })
@@ -14,17 +14,17 @@ export function useEvents() {
   }
 }
 
-export function useEventsMutation<TData = unknown, TVariables = unknown>(
-  mutationFn: MutationFunction<TData, TVariables>,
-) {
+export function useEventsMutation() {
   const queryClient = useQueryClient()
-  const mutation = useMutation(mutationFn, {
+
+  const deleteMutation = useMutation({
+    mutationFn: deleteEvent,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['events'] })
     },
   })
 
-  return mutation
+  return { deleteMutation }
 }
 
 // Query functions go here e.g. useAddFruit

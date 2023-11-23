@@ -1,4 +1,5 @@
 import { Event } from '../../models/event'
+import { useEventsMutation } from '../hooks/useEvents'
 
 export default function EventItem({
   id,
@@ -10,6 +11,13 @@ export default function EventItem({
   createdBy,
   editNote,
 }: Event) {
+  const { deleteMutation } = useEventsMutation()
+
+  const handleDeleteClick = () => {
+    console.log('deleting', id)
+    deleteMutation.mutate(id)
+  }
+
   return (
     <div key={id}>
       <h2>
@@ -21,6 +29,7 @@ export default function EventItem({
       </p>
       <p>Attendees: {attendees}</p>
       {editNote !== null && <p>*Edit Note: {editNote}</p>}
+      <button onClick={handleDeleteClick}>Delete</button>
     </div>
   )
 }
