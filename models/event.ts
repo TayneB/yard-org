@@ -1,4 +1,4 @@
-export interface Event {
+export interface Events {
   id: number
   name: string
   event_date: number
@@ -18,8 +18,4 @@ export interface Event {
   createdBy: string
   dateCreated: number
   editNote: null | string
-}
-
-export interface FruitData {
-  name: string
 }

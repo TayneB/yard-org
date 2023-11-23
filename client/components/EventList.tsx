@@ -1,31 +1,34 @@
 import { useEvents } from '../hooks/useEvents'
+import EventItem from './EventItem'
 
 export default function EventList() {
   const { data, isLoading, isError } = useEvents()
-
-  if (!data || isLoading) {
-    return <p>Loading...</p>
-  }
 
   if (isError) {
     return <p>Somthing went wrong...</p>
   }
 
+  if (!data || isLoading) {
+    return <p>Loading...</p>
+  }
+
   console.log(data)
 
   return (
-    <ul>
+    <div>
       {data.map((event) => (
-        <li key={event.id}>
-          <h2>
-            {event.createdBy}'s {event.name}
-          </h2>
-          <h3>{new Date(event.eventDate).toLocaleString()}</h3>
-          <p>{event.description}</p>
-          <p>Attendees: {event.attendees}</p>
-          <p>*Edit Note: {event.editNote}</p>
-        </li>
+        <EventItem
+          key={event.id}
+          name={event.name}
+          description={event.description}
+          eventDate={event.eventDate}
+          attendees={event.attendees}
+          createdBy={event.createdBy}
+          editNote={event.editNote}
+          id={event.id}
+          dateCreated={event.dateCreated}
+        />
       ))}
-    </ul>
+    </div>
   )
 }
