@@ -175,3 +175,32 @@ describe('GET /api/v1/events/', () => {
     expect(response.text).toBe('{"message":"Something went wrong"}')
   })
 })
+
+describe('DELETE /api/v1/delete/:id', () => {
+  it('deletes specified event by id', async () => {
+    // Arrange
+    vi.mocked(db.deleteEvent).mockResolvedValue(1)
+
+    // Act
+    const response = await request(server).delete('/api/v1/events/delete/1')
+
+    // Assert
+    expect(response.status).toBe(200)
+    expect(response.body).toEqual({ message: `deleted 1` })
+  })
+
+  it('returns an error if deleteEvent throws', async () => {
+    // Arrange
+    const error = new Error('DATABASE ERROR: secret error info')
+    vi.mocked(db.deleteEvent).mockRejectedValue(error)
+    vi.spyOn(console, 'log').mockImplementation(() => {})
+
+    // Act
+    const response = await request(server).delete('/api/v1/events/delete/badId')
+
+    // Assert
+    expect(console.log).toHaveBeenCalledWith(error)
+    expect(response.status).toBe(500)
+    expect(response.text).toBe('{"message":"Something went wrong"}')
+  })
+})
