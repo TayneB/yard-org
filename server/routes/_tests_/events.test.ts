@@ -3,7 +3,7 @@ import server from '../../server'
 import request from 'supertest'
 
 import * as db from '../../db/events.ts'
-import { Event } from '../../../models/event.ts'
+// import { Event } from '../../../models/event.ts'
 
 vi.mock('../../db/events.ts')
 

@@ -20,10 +20,10 @@ router.delete('/delete/:id', async (req, res) => {
   try {
     const { id } = req.params
     await db.deleteEvent(id)
-    res.send(`deleted`)
+    res.json({ message: `deleted ${id}` })
   } catch (e) {
     console.log(e)
-    res.status(500).json({ message: 'Something whent wrong' })
+    res.status(500).json({ message: 'Something went wrong' })
   }
 })
 
