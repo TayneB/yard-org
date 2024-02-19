@@ -1,8 +1,10 @@
-# Boilerplate: Fullstack with Sass
+# Bilyard Family Organiser
+--------------------------------------------------
+## Boilerplate: Fullstack with Sass
 
-## Setup
+### Setup
 
-### What's included
+#### What's included
 
 This repo includes:
 
