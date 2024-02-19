@@ -5,7 +5,7 @@ export default function EventList() {
   const { data, isLoading, isError } = useEvents()
 
   if (isError) {
-    return <p>Somthing went wrong...</p>
+    return <p>Something went wrong...</p>
   }
 
   if (!data || isLoading) {
