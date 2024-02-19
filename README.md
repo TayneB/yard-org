@@ -1,4 +1,9 @@
 # Bilyard Family Organiser
+For the family to schedule events with.
+Functionality being implemented and will be documented as added.
+Current Functions:
+- View Events
+- Delete Events
 --------------------------------------------------
 ## Boilerplate: Fullstack with Sass
 
