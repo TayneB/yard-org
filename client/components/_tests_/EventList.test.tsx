@@ -117,6 +117,26 @@ describe('EventList', () => {
     const haurakiBoatTrip = screen.queryAllByText(/Hauraki Boat Trip/i)
     // Assert
     expect(haurakiBoatTrip[0]).toBeInTheDocument()
+    expect(haurakiBoatTrip).toHaveLength(3)
+    expect(scope.isDone()).toBe(true)
+  })
+
+  it('deletes an event', async () => {
+    // Arrange
+    const scope = nock('http://localhost').get('/api/v1/events').reply(200, {
+      events: eventList,
+    })
+    const deleteScope = nock('http://localhost')
+      .delete('/api/v1/events/delete/1')
+      .reply(200, { message: 'deleted 1' })
+    // ACT
+    const { user, ...screen } = renderRoute('/')
+    await waitForElementToBeRemoved(() => screen.getByText(/Loading.../i))
+    const deleteButton = screen.getAllByRole('button', { name: /delete/i })
+    await user.click(deleteButton[0])
+
+    // Assert
+    expect(deleteScope.isDone()).toBe(true)
     expect(scope.isDone()).toBe(true)
   })
 })
